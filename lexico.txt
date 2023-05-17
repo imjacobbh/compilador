@@ -1,0 +1,180 @@
+ int  -- palabra reservada -- 
+ vector  -- ídentificador --
+ ,  -- simbolo especial --
+ su  -- ídentificador --
+ mas  -- ídentificador --
+ ,  -- simbolo especial --
+ res  -- ídentificador --
+ tas  -- ídentificador --
+ ,  -- simbolo especial --
+ suma1  -- ídentificador --
+ ,  -- simbolo especial --
+ suma2  -- ídentificador --
+ ,  -- simbolo especial --
+ 25 -- entero -- 
+ ert  -- ídentificador --
+ ;  -- simbolo especial --
+ main  -- palabra reservada -- 
+ if  -- palabra reservada -- 
+ (  -- simbolo especial --
+ while  -- palabra reservada -- 
+ )  -- simbolo especial --
+ if  -- palabra reservada -- 
+ +  -- operador aritmetico --
+ 34.34 -- flotante -- 
+ 34.34 -- flotante -- 
+ 34 -- entero -- 
+ -  -- operador aritmetico --
+ 34 -- entero -- 
+ ++-- operador aritmetico --
+ ++-- operador aritmetico --
+ +  -- operador aritmetico --
+ ---- operador aritmetico --
+ ---- operador aritmetico --
+ -  -- operador aritmetico --
+ cin  -- palabra reservada -- 
+ > -- operador relacional --
+ > -- operador relacional --
+ >= -- operador relacional --
+ < -- operador relacional --
+ < -- operador relacional --
+ <= -- operador relacional --
+ == -- operador relacional --
+ =  -- operador aritmetico --
+ != -- operador relacional --
+ {  -- simbolo especial --
+ int  -- palabra reservada -- 
+ x  -- ídentificador --
+ ,  -- simbolo especial --
+ y  -- ídentificador --
+ ,  -- simbolo especial --
+ z  -- ídentificador --
+ ;  -- simbolo especial --
+ real  -- palabra reservada -- 
+ a  -- ídentificador --
+ ,  -- simbolo especial --
+ b  -- ídentificador --
+ ,  -- simbolo especial --
+ c  -- ídentificador --
+ ;  -- simbolo especial --
+ cin  -- palabra reservada -- 
+ gfkh  -- ídentificador --
+ c  -- ídentificador --
+ int  -- palabra reservada -- 
+ real  -- palabra reservada -- 
+ x  -- ídentificador --
+ =  -- operador aritmetico --
+ 23 -- entero -- 
+ ;  -- simbolo especial --
+ y  -- ídentificador --
+ =  -- operador aritmetico --
+ 2 -- entero -- 
+ +  -- operador aritmetico --
+ 3 -- entero -- 
+ -  -- operador aritmetico --
+ 1 -- entero -- 
+ ;  -- simbolo especial --
+ z  -- ídentificador --
+ =  -- operador aritmetico --
+ y  -- ídentificador --
+ +  -- operador aritmetico --
+ 7 -- entero -- 
+ ;  -- simbolo especial --
+ a  -- ídentificador --
+ =  -- operador aritmetico --
+ 24.0 -- flotante -- 
+ +  -- operador aritmetico --
+ 4 -- entero -- 
+ -  -- operador aritmetico --
+ 1 -- entero -- 
+ *  -- operador aritmetico --
+ 3 -- entero -- 
+ /  -- operador aritmetico --
+ 2 -- entero -- 
+ +  -- operador aritmetico --
+ 34 -- entero -- 
+ -  -- operador aritmetico --
+ 1 -- entero -- 
+ ;  -- simbolo especial --
+ if  -- palabra reservada -- 
+ (  -- simbolo especial --
+ 2 -- entero -- 
+ > -- operador relacional --
+ 3 -- entero -- 
+ )  -- simbolo especial --
+ y  -- ídentificador --
+ =  -- operador aritmetico --
+ a  -- ídentificador --
+ +  -- operador aritmetico --
+ 3 -- entero -- 
+ ;  -- simbolo especial --
+ else  -- palabra reservada -- 
+ if  -- palabra reservada -- 
+ (  -- simbolo especial --
+ 4 -- entero -- 
+ > -- operador relacional --
+ 2 -- entero -- 
+ )  -- simbolo especial --
+ b  -- ídentificador --
+ =  -- operador aritmetico --
+ 3.2 -- flotante -- 
+ ;  -- simbolo especial --
+ else  -- palabra reservada -- 
+ b  -- ídentificador --
+ =  -- operador aritmetico --
+ 5.0 -- flotante -- 
+ ;  -- simbolo especial --
+ end  -- palabra reservada -- 
+ ;  -- simbolo especial --
+ y  -- ídentificador --
+ =  -- operador aritmetico --
+ y  -- ídentificador --
+ +  -- operador aritmetico --
+ 1 -- entero -- 
+ ;  -- simbolo especial --
+ end  -- palabra reservada -- 
+ ;  -- simbolo especial --
+ do  -- palabra reservada -- 
+ y  -- ídentificador --
+ =  -- operador aritmetico --
+ (  -- simbolo especial --
+ y  -- ídentificador --
+ +  -- operador aritmetico --
+ 1 -- entero -- 
+ )  -- simbolo especial --
+ *  -- operador aritmetico --
+ 2 -- entero -- 
+ +  -- operador aritmetico --
+ 1 -- entero -- 
+ ;  -- simbolo especial --
+ until  -- palabra reservada -- 
+ (  -- simbolo especial --
+ y  -- ídentificador --
+ == -- operador relacional --
+ 5 -- entero -- 
+ )  -- simbolo especial --
+ ;  -- simbolo especial --
+ while  -- palabra reservada -- 
+ (  -- simbolo especial --
+ y  -- ídentificador --
+ == -- operador relacional --
+ 0 -- entero -- 
+ )  -- simbolo especial --
+ {  -- simbolo especial --
+ cout  -- palabra reservada -- 
+ x  -- ídentificador --
+ ;  -- simbolo especial --
+ }  -- simbolo especial --
+ ;  -- simbolo especial --
+ }  -- simbolo especial --
+ de  -- ídentificador --
+ mas  -- ídentificador --
+ int  -- palabra reservada -- 
+ 45 -- entero -- 
+ ert67  -- ídentificador --
+ 45.67 -- flotante -- 
+ ;  -- simbolo especial --
+ then  -- palabra reservada -- 
+ mas  -- ídentificador --
+ lienas  -- ídentificador --
+ while  -- palabra reservada -- 

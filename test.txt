@@ -1,0 +1,59 @@
+int vector, su&mas, res@tas,suma1,suma2,25ert;
+main if(while)if+34.34.34.34.34-34+++++-----
+cin >>>=<<<====!=
+{
+int x,y,z;
+real a, b, c;
+cin
+gfkh
+ int
+real
+
+x=23;
+y=2+3-1;
+z=y+7;
+a=24.0+4-1*3/2+34-1;
+if (2>3)
+        y=a+3;
+  else
+      if(4>2)
+             b=3.2;
+       else
+           b=5.0;
+       end;
+       y=y+1;
+end;
+do
+y=(y+1)*2+1;
+until(y==5);
+while(y==0){
+cout x;
+};
+}
+
+// esto es un comentario
+
+/*
+de
+
+mas
+
+
+de
+
+una
++++
+****
+---------------
+line
+
+a
+
+*/
+
+if ya se termino
+while 
+int !45ert67.45.67;
+then 
+mas lienas
+while
