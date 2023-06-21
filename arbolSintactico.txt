@@ -1,0 +1,127 @@
+Arbol Sintactico
+| -- Programa
+|    -- Sentencias
+|   |   | -- DeclaraciónInt
+|   |   |    -- ListaId
+|   |   |   |    -- oo
+|   |   | -- DeclaraciónInt
+|   |   |    -- ListaId
+|   |   |   |   | -- x
+|   |   |   |    -- ListaId
+|   |   |   |   |   | -- u
+|   |   |   |   |    -- ListaId
+|   |   |   |   |   |   | -- g
+|   |   |   |   |   |    -- ListaId
+|   |   |   |   |   |   |    -- e
+|   |   | -- DeclaraciónFloat
+|   |   |    -- ListaId
+|   |   |   |   | -- w
+|   |   |   |    -- ListaId
+|   |   |   |   |   | -- p
+|   |   |   |   |    -- ListaId
+|   |   |   |   |   |    -- m
+|   |   | -- Asignación
+|   |   |   | -- Factor
+|   |   |   |    -- 2
+|   |   |    -- z
+|   |   | -- Asignación
+|   |   |   | -- Factor
+|   |   |   |    -- 3.24
+|   |   |    -- w
+|   |   | -- Asignación
+|   |   |   | -- Factor
+|   |   |   |   | -- z
+|   |   |   |   | -- +
+|   |   |   |    -- Factor
+|   |   |   |   |   | -- w
+|   |   |   |   |   | -- *
+|   |   |   |   |   | -- Factor
+|   |   |   |   |   |    -- 3
+|   |   |   |   |   | -- -
+|   |   |   |   |    -- Factor
+|   |   |   |   |   |    -- 6
+|   |   |    -- x
+|   |   | -- Asignación
+|   |   |   | -- Factor
+|   |   |   |    -- 12
+|   |   |    -- y
+|   |   | -- SentenciaWhile
+|   |   |   | -- Factor
+|   |   |   |   | -- z
+|   |   |   |   | -- <=
+|   |   |   |    -- w
+|   |   |    -- Bloque
+|   |   |   |    -- Sentencias
+|   |   |   |   |    -- SentenciaIf
+|   |   |   |   |   |   | -- Factor
+|   |   |   |   |   |   |   | -- i
+|   |   |   |   |   |   |   | -- ==
+|   |   |   |   |   |   |    -- 1
+|   |   |   |   |   |   | -- Sentencias
+|   |   |   |   |   |   |   | -- Asignación
+|   |   |   |   |   |   |   |   | -- Factor
+|   |   |   |   |   |   |   |   |    -- w
+|   |   |   |   |   |   |   |    -- z
+|   |   |   |   |   |   |   | -- Asignación
+|   |   |   |   |   |   |   |   | -- Factor
+|   |   |   |   |   |   |   |   |    -- 2
+|   |   |   |   |   |   |   |    -- i
+|   |   |   |   |   |   |    -- SentenciaIf
+|   |   |   |   |   |   |   |   | -- Factor
+|   |   |   |   |   |   |   |   |   | -- i
+|   |   |   |   |   |   |   |   |   | -- !=
+|   |   |   |   |   |   |   |   |    -- 5
+|   |   |   |   |   |   |   |   | -- Sentencias
+|   |   |   |   |   |   |   |   |   | -- Asignación
+|   |   |   |   |   |   |   |   |   |   | -- Factor
+|   |   |   |   |   |   |   |   |   |   |   | -- i
+|   |   |   |   |   |   |   |   |   |   |   | -- +
+|   |   |   |   |   |   |   |   |   |   |    -- Factor
+|   |   |   |   |   |   |   |   |   |   |   |    -- 1
+|   |   |   |   |   |   |   |   |   |    -- i
+|   |   |   |   |   |   |   |   |    -- SentenciaIf
+|   |   |   |   |   |   |   |   |   |   | -- Factor
+|   |   |   |   |   |   |   |   |   |   |   | -- i
+|   |   |   |   |   |   |   |   |   |   |   | -- >
+|   |   |   |   |   |   |   |   |   |   |    -- 5
+|   |   |   |   |   |   |   |   |   |    -- Sentencias
+|   |   |   |   |   |   |   |   |   |   |    -- Asignación
+|   |   |   |   |   |   |   |   |   |   |   |   | -- Factor
+|   |   |   |   |   |   |   |   |   |   |   |   |    -- 2
+|   |   |   |   |   |   |   |   |   |   |   |    -- i
+|   |   |   |   |   |   |   |    -- Sentencias
+|   |   |   |   |   |   |   |   |    -- Asignación
+|   |   |   |   |   |   |   |   |   |   | -- Factor
+|   |   |   |   |   |   |   |   |   |   |   | -- i
+|   |   |   |   |   |   |   |   |   |   |   | -- -
+|   |   |   |   |   |   |   |   |   |   |    -- Factor
+|   |   |   |   |   |   |   |   |   |   |   |    -- 1
+|   |   |   |   |   |   |   |   |   |    -- i
+|   |   |   |   |   |    -- Sentencias
+|   |   |   |   |   |   |    -- Asignación
+|   |   |   |   |   |   |   |   | -- Factor
+|   |   |   |   |   |   |   |   |    -- x
+|   |   |   |   |   |   |   |    -- y
+|   |   | -- Asignación
+|   |   |   | -- Error
+|   |   |    -- gg
+|   |   | -- Error
+|   |   | -- Asignación
+|   |   |   | -- Factor
+|   |   |   |    -- 0
+|   |   |    -- x
+|   |    -- SentenciaDo
+|   |   |   | -- Asignación
+|   |   |   |   | -- Factor
+|   |   |   |   |   | -- x
+|   |   |   |   |   | -- +
+|   |   |   |   |    -- Factor
+|   |   |   |   |   |    -- 5
+|   |   |   |    -- x
+|   |   |   | -- SentenciaOutput
+|   |   |   |    -- ListaId
+|   |   |   |   |    -- x
+|   |   |    -- Factor
+|   |   |   |   | -- x
+|   |   |   |   | -- >
+|   |   |   |    -- 100
