@@ -1,4 +1,0 @@
-Se esperaba =, se encontró ;
-Factor inválido: cin
-Se esperaba ;, se encontró id
-Sentencia inválida: ;

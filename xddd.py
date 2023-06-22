@@ -91,14 +91,18 @@ class Parser:
         if self.current_token and self.current_token.token_type == "int":
             root = Node("DeclaraciónInt")
             self.match("int")
-            root.add_child(self.idList())
+            idlist = Node("ListaId")
+            root.add_child(idlist)
+            root.add_child(self.idList(idlist))
             self.match(";")
         elif self.current_token and self.current_token.token_type == "do":
             root = self.do_while_stmt()
         elif self.current_token and self.current_token.token_type == "float":
             root = Node("DeclaraciónFloat")
             self.match("float")
-            root.add_child(self.idList())
+            idlist = Node("ListaId")
+            root.add_child(idlist)
+            root.add_child(self.idList(idlist))
             self.match(";")
         elif self.current_token and self.current_token.token_type == "id":
             root = Node("Asignación")
@@ -176,7 +180,9 @@ class Parser:
             root = Node("SentenciaInput")
             
             self.match("cin")
-            root.add_child(self.idList())
+            idlist = Node("ListaId")
+            root.add_child(idlist)
+            root.add_child(self.idList(idlist))
             self.match(";")
         elif self.current_token and self.current_token.token_type == "cout":
             root = Node("SentenciaOutput")
@@ -190,84 +196,25 @@ class Parser:
                 self.errors.append(f"Sentencia inválida: {error_token}")
             self.advance()
         return root
-    
-    def idList(self):
-        root = Node("IdList")
-        id_node = Node(self.current_token.value)
-        root.add_child(id_node)
+
+    def idList(self, root):
+        #root = Node("ListaId")
+        #id_node = Node(self.current_token.value)
         self.match("id")
-        while self.current_token and  self.current_token.value ==","  and  self.current_token.value !=";":
+        #root.add_child(id_node)
+        while self.current_token and self.current_token.token_type == ",":
             self.match(",")
-            id_node = Node(self.current_token.value)
-            root.add_child(id_node)
-            self.match("id")
-            
+            root.add_child(self.idList(root))
         return root
+
     def expr(self):
-        root = self.term()
-        while self.current_token and self.current_token.token_type in ["+", "-"]:
+        root = self.relational_expr()
+        if self.current_token and self.current_token.token_type in ["+", "-"]:
             op_node = Node(self.current_token.value)
             self.match(self.current_token.token_type)
-            op_node.add_child(root)
-            root = op_node
-            root.add_child(self.term())
-        
+            root.add_child(op_node)
+            root.add_child(self.expr())
         return root
-
-    def term(self):
-        root = self.factor()
-        while self.current_token and self.current_token.token_type in ["*", "/"]:
-            op_node = Node(self.current_token.value)
-            self.match(self.current_token.token_type)
-            op_node.add_child(root)
-            root = op_node
-            root.add_child(self.factor())
-        
-        return root
-
-    def factor(self):
-        root = self.primary()
-        while self.current_token and self.current_token.token_type in [
-            "<",
-            ">",
-            "<=",
-            ">=",
-            "==",
-            "!=",
-        ]:
-            op_node = Node(self.current_token.value)
-            self.match(self.current_token.token_type)
-            op_node.add_child(root)
-            root = op_node
-            root.add_child(self.primary())
-        
-        return root
-
-    def primary(self):
-        if self.current_token and self.current_token.token_type == "(":
-            self.match("(")
-            root = self.expr()
-            self.match(")")
-        elif self.current_token and self.current_token.token_type in ["id", "num"]:
-            root = Node(self.current_token.value)
-            self.match(self.current_token.token_type)
-        else:
-            root = Node("Error")
-            error_token = self.current_token.value if self.current_token else None
-            self.errors.append(f"Factor inválido: {error_token}")
-            self.advance()
-        
-        return root
-    
-    # def expr(self):
-    # root = self.term()
-    # while self.current_token and self.current_token.token_type in ["+", "-"]:
-    #     op_node = Node(self.current_token.value)
-    #     self.match(self.current_token.token_type)
-    #     op_node.add_child(root)  # Agregar el subárbol actual como hijo del nodo de operador
-    #     root = op_node  # El subárbol actual se convierte en el nuevo nodo raíz
-    #     root.add_child(self.term())  # Agregar el siguiente término como hijo del nodo de operador
-    # return root
 
     def relational_expr(self):
         root = self.term()
@@ -288,33 +235,33 @@ class Parser:
                 self.match(self.current_token.token_type)
         return root
 
-    # def term(self):
-    #     root = self.factor()
-    #     while self.current_token and self.current_token.value in ["*", "/"]:
-    #         op_node = Node(self.current_token.value)
-    #         self.match(self.current_token.token_type)
-    #         root.add_child(op_node)
-    #         root.add_child(self.factor())
-    #     return root
+    def term(self):
+        root = self.factor()
+        while self.current_token and self.current_token.token_type in ["*", "/"]:
+            op_node = Node(self.current_token.value)
+            self.match(self.current_token.token_type)
+            root.add_child(op_node)
+            root.add_child(self.factor())
+        return root
 
-    # def factor(self):
-    #     root = Node("Factor")
-    #     if self.current_token and self.current_token.token_type == "(":
-    #         self.match("(")
-    #         root.add_child(self.expr())
-    #         self.match(")")
-    #     elif self.current_token and self.current_token.token_type in ["id", "num"]:
-    #         value = self.current_token.value if self.current_token else None
-    #         if value is not None:
-    #             value_node = Node(value)
-    #             root.add_child(value_node)
-    #         self.match(self.current_token.token_type)
-    #     else:
-    #         root = Node("Error")
-    #         error_token = self.current_token.value if self.current_token else None
-    #         self.errors.append(f"Factor inválido: {error_token}")
-    #         self.advance()
-    #     return root
+    def factor(self):
+        root = Node("Factor")
+        if self.current_token and self.current_token.token_type == "(":
+            self.match("(")
+            root.add_child(self.expr())
+            self.match(")")
+        elif self.current_token and self.current_token.token_type in ["id", "num"]:
+            value = self.current_token.value if self.current_token else None
+            if value is not None:
+                value_node = Node(value)
+                root.add_child(value_node)
+            self.match(self.current_token.token_type)
+        else:
+            root = Node("Error")
+            error_token = self.current_token.value if self.current_token else None
+            self.errors.append(f"Factor inválido: {error_token}")
+            self.advance()
+        return root
 
     def parse(self):
         ast = self.program()
@@ -335,7 +282,7 @@ token_list = []
 for line in lines:
     line = line.strip()
     if line:
-        token_parts = line.split("--*")
+        token_parts = line.split("--")
         if token_parts[1].strip() == "identificador":
             token_type = "id"
             value = token_parts[0].strip()
@@ -375,10 +322,10 @@ f = open("arbolSintactico.txt", "w", encoding="utf-8")
 print("Arbol de Sintactico:")
 f.write("Arbol Sintactico")
 def print_ast(node, level=0, is_last_child=False):
-    indent = " | " * level
-   # child_prefix = " -- " if is_last_child else "| -- "
-    print(f"{indent}{node.value}")
-    f.write(f"\n{indent}{node.value}")
+    indent = "|   " * level
+    child_prefix = " -- " if is_last_child else "| -- "
+    print(f"{indent}{child_prefix}{node.value}")
+    f.write(f"\n{indent}{child_prefix}{node.value}")
     for i, child in enumerate(node.children):
         is_last = i == len(node.children) - 1
         print_ast(child, level + 1, is_last)

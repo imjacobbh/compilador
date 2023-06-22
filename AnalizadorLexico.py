@@ -5,7 +5,7 @@ from optparse import OptionParser
 parser = OptionParser(version="%prog 1.0.3")
 parser.add_option(
     "-f",
-    "--file",
+    "--*file",
     action="store",
     dest="file",
     default="test.txt",
@@ -100,9 +100,9 @@ while i < len(contenidodecodigo):
             j += 1
         token = contenidodecodigo[i:j]
         if token in palabras_reservadas:
-            tokens.append(" " + token + "  -- " + palabras_reservadas[token] + " -- ")
+            tokens.append(" " + token + "  --* " + palabras_reservadas[token] + " --* ")
         else:
-            tokens.append(" " + token + "  -- identificador --")
+            tokens.append(" " + token + "  --* identificador --*")
         col += j - i
         i = j
         continue
@@ -114,35 +114,35 @@ while i < len(contenidodecodigo):
             j += 1
             while j < len(contenidodecodigo) and contenidodecodigo[j].isdigit():
                 j += 1
-            tokens.append(" " + contenidodecodigo[i:j] + " -- flotante -- ")
+            tokens.append(" " + contenidodecodigo[i:j] + " --* flotante --* ")
         else:
-            tokens.append(" " + contenidodecodigo[i:j] + " -- entero -- ")
+            tokens.append(" " + contenidodecodigo[i:j] + " --* entero --* ")
         col += j - i
         i = j
         continue
     # Identificar símbolos especiales
     if contenidodecodigo[i] in simbolos_especiales:
-        tokens.append(" " + contenidodecodigo[i] + "  -- simbolo especial --")
+        tokens.append(" " + contenidodecodigo[i] + "  --* simbolo especial --*")
         i += 1
         col += 1
         continue
     # Identificar operadores aritméticos y relacionales
     if contenidodecodigo[i : i + 2] in operadores_relacionales:
-        tokens.append(" " + contenidodecodigo[i : i + 2] + " -- operador relacional --")
+        tokens.append(" " + contenidodecodigo[i : i + 2] + " --* operador relacional --*")
         i += 2
         col += 2
         continue
     elif contenidodecodigo[i] in operadores_relacionales:
-        tokens.append(" " + contenidodecodigo[i] + " -- operador relacional --")
+        tokens.append(" " + contenidodecodigo[i] + " --* operador relacional --*")
         i += 1
         continue
     if contenidodecodigo[i : i + 2] in operadores_dobles:
-        tokens.append(" " + contenidodecodigo[i : i + 2] + "-- operador aritmetico --")
+        tokens.append(" " + contenidodecodigo[i : i + 2] + "--* operador aritmetico --*")
         i += 2
         col += 1
         continue
     elif contenidodecodigo[i] in operadores_aritmeticos:
-        tokens.append(" " + contenidodecodigo[i] + "  -- operador aritmetico --")
+        tokens.append(" " + contenidodecodigo[i] + "  --* operador aritmetico --*")
         i += 1
         col += 1
         continue
