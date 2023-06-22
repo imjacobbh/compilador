@@ -106,8 +106,13 @@ class Parser:
             self.match("id")
             root.add_child(id_node)
             if self.current_token and self.current_token.token_type in ["++", "--"]:
-                op_node = Node(self.current_token.value)
+                op_node = None
+                if(self.current_token.token_type =="++"):
+                    op_node = Node("+")
+                else:     op_node = Node("-")
+                op_node.add_child(id_node)
                 self.match(self.current_token.token_type)
+                op_node.add_child(Node("1"))
                 root.add_child(op_node)
             elif self.current_token and self.current_token.token_type in [
                 "<",
