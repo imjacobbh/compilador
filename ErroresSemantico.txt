@@ -1,9 +1,5 @@
-Error Linea 3: La variable i, ya se declaro previamente
-Error Linea 3: La variable z, ya se declaro previamente
-Error Linea 5: La variable x, ya se declaro previamente
 Error linea 7: tipo erroneo
-Error linea 8: tipo erroneo
-Error linea 10: tipo erroneo
-Error Línea 9: La expresión no es booleana.
-Error linea 13: tipo erroneo
-Error Línea 17: La expresión no es booleana.
+Error linea 9: tipo erroneo
+Error Línea 8: La expresión no es booleana.
+Error linea 12: tipo erroneo
+Error Línea 16: La expresión no es booleana.

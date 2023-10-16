@@ -424,8 +424,9 @@ class SymbolTable:
             left_value = self.evaluate_expression(node.children[0])
             right_value = self.evaluate_expression(node.children[1])
             if left_value is None or right_value is None:
-                raise ValueError(f"Error in expression at line {node.line_no}")
-
+                #raise ValueError(f"Error in expression at line {node.line_no}")
+                errores_semantico.append(f"Type error at line {node.line_no}")
+                return
             if type(left_value) != type(right_value):
                 node.type = "float"
 #                raise ValueError(f"Type mismatch at line {node.line_no}")
@@ -487,17 +488,19 @@ class SymbolTable:
                 # Handle variable lookup here
                 var_name = node.value
                 var_info = self.lookup(var_name)
-                if var_info[1] == "int":
-                    node.val = var_info[0]
-                    node.type = var_info[1]
-                    return var_info[0]
-                elif var_info[1] == "float":
-                    node.val = var_info[0]
-                    node.type = var_info[1]
-                    return var_info[0]
-                else:
-                    raise ValueError(f"Type error at line {node.line_no}")
-            
+                if(var_info != None):
+                    if var_info[1] == "int":
+                        node.val = var_info[0]
+                        node.type = var_info[1]
+                        return var_info[0]
+                    elif var_info[1] == "float":
+                        node.val = var_info[0]
+                        node.type = var_info[1]
+                        return var_info[0]
+                    else:
+                        errores_semantico.append(f"Type error at line {node.line_no}")
+                else: 
+                    return
     def is_float(self, value):
         try:
             float_value = float(value)

@@ -4,13 +4,8 @@ Programa
  |  | DeclaraciónInt
  |  |  | IdList
  |  |  |  | y
- |  |  |  | x
- |  |  |  | i
  |  |  |  | z
- |  | DeclaraciónFloat
- |  |  | IdList
  |  |  |  | i
- |  |  |  | z
  |  | Asignación
  |  |  | i
  |  |  | +

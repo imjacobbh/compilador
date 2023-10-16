@@ -162,7 +162,7 @@ public class Interfaz extends javax.swing.JFrame {
                                 matcher.end() - matcher.start(), attred, true);
                     }
                     //match tipo de datos
-                    Pattern tipoDeDatos = Pattern.compile("\\b(int|INT|real|REAL|boolean|BOOLEAN)\\b");
+                    Pattern tipoDeDatos = Pattern.compile("\\b(int|INT|real|REAL|boolean|float|FLOAT|BOOLEAN)\\b");
                     matcher = tipoDeDatos.matcher(text);
                     while (matcher.find()) {
                         setCharacterAttributes(matcher.start(),
@@ -231,7 +231,7 @@ public class Interfaz extends javax.swing.JFrame {
                             matcher.end() - matcher.start(), attred, true);
                 }
                 //match tipo de datos
-                Pattern tipoDeDatos = Pattern.compile("\\b(int|INT|real|REAL|boolean|BOOLEAN)\\b");
+                Pattern tipoDeDatos = Pattern.compile("\\b(int|INT|real|REAL|boolean|float|BOOLEAN)\\b");
                 matcher = tipoDeDatos.matcher(text);
                 while (matcher.find()) {
                     setCharacterAttributes(matcher.start(),
