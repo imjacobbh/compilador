@@ -112,6 +112,11 @@ class Parser:
             self.match("int")
             root.add_child(self.idList())
             self.match(";")
+        elif self.current_token and self.current_token.token_type == "boolean":
+             root = Node("DeclaraciónBoolean", self.current_token.line_no)
+             self.match("boolean")
+             root.add_child(self.idList())
+             self.match(";")
         elif self.current_token and self.current_token.token_type == "do":
             root = self.do_while_stmt()
         elif self.current_token and self.current_token.token_type == "float":
@@ -497,6 +502,10 @@ class SymbolTable:
                         node.val = var_info[0]
                         node.type = var_info[1]
                         return var_info[0]
+                    elif var_info[1] == "boolean":
+                        node.val = var_info[0]
+                        node.type = var_info[1] 
+                        return var_info[0]
                     else:
                         errores_semantico.append(f"Type error at line {node.line_no}")
                 else: 
@@ -538,7 +547,10 @@ def semantic_analysis(node, symbol_table):
         if expr_node.value in comparison_operators:
             return True
         else:
-            return False
+            var_info = symbol_table.lookup(expr_node.value)
+            if(var_info != None  and var_info[1] == "boolean"):
+                return True
+            else: return False
 
     if node is None:
         return
@@ -547,6 +559,8 @@ def semantic_analysis(node, symbol_table):
         datatype = "int"
     elif node.value == "DeclaraciónFloat":
         datatype = "float"
+    elif node.value == "DeclaraciónBoolean":
+        datatype = "boolean"
     else:
         datatype = None
 
@@ -554,8 +568,11 @@ def semantic_analysis(node, symbol_table):
         id_list = node.children[0]
         for id_node in id_list.children:
             id_node.type = datatype
-            id_node.val = 0
-            symbol_table.insert(id_node.value, 0, datatype, None, node.line_no, shouldntExist=True)
+            if(datatype == "boolean"):
+                id_node.val = False
+            else: 
+                id_node.val = 0
+            symbol_table.insert(id_node.value, id_node.val , datatype, None, node.line_no, shouldntExist=True)
 
     for child in node.children:
         semantic_analysis(child, symbol_table)

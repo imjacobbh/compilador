@@ -7,11 +7,10 @@
  ,  --* simbolo especial --*2
  i  --* identificador --*2
  ;  --* simbolo especial --*2
- i  --* identificador --*3
- =  --* operador aritmetico --*3
- 1 --* entero --* 3
- +  --* operador aritmetico --*3
- 1 --* entero --* 3
+ boolean  --* palabra reservada --* 3
+ truee  --* identificador --*3
+ ,  --* simbolo especial --*3
+ falsee  --* identificador --*3
  ;  --* simbolo especial --*3
  float  --* palabra reservada --* 4
  x  --* identificador --*4
@@ -59,56 +58,54 @@
  if  --* palabra reservada --* 8
  (  --* simbolo especial --*8
  i  --* identificador --*8
- +  --* operador aritmetico --*8
+ < --* operador relacional --*8
  2 --* entero --* 8
  )  --* simbolo especial --*8
- z  --* identificador --*9
+ x  --* identificador --*9
  =  --* operador aritmetico --*9
- 24.1 --* flotante --* 9
+ 2.0 --* flotante --* 9
  ;  --* simbolo especial --*9
- end  --* palabra reservada --* 11
- z  --* identificador --*12
- =  --* operador aritmetico --*12
- 2.1 --* flotante --* 12
+ end  --* palabra reservada --* 10
+ z  --* identificador --*11
+ =  --* operador aritmetico --*11
+ 2.1 --* flotante --* 11
+ ;  --* simbolo especial --*11
+ x  --* identificador --*12
+ ++--* operador aritmetico --*12
  ;  --* simbolo especial --*12
- x  --* identificador --*13
- ++--* operador aritmetico --*13
+ y  --* identificador --*13
+ =  --* operador aritmetico --*13
+ 12 --* entero --* 13
  ;  --* simbolo especial --*13
- y  --* identificador --*14
- =  --* operador aritmetico --*14
- 12 --* entero --* 14
- ;  --* simbolo especial --*14
- while  --* palabra reservada --* 15
+ while  --* palabra reservada --* 14
+ (  --* simbolo especial --*14
+ truee  --* identificador --*14
+ )  --* simbolo especial --*14
+ {  --* simbolo especial --*14
+ if  --* palabra reservada --* 15
  (  --* simbolo especial --*15
- z  --* identificador --*15
- < --* operador relacional --*15
- w  --* identificador --*15
+ i  --* identificador --*15
+ +  --* operador aritmetico --*15
+ 1 --* entero --* 15
  )  --* simbolo especial --*15
- {  --* simbolo especial --*15
- if  --* palabra reservada --* 16
- (  --* simbolo especial --*16
- i  --* identificador --*16
- +  --* operador aritmetico --*16
- 1 --* entero --* 16
- )  --* simbolo especial --*16
- z  --* identificador --*17
- =  --* operador aritmetico --*17
- 24 --* entero --* 17
- ;  --* simbolo especial --*17
- end  --* palabra reservada --* 18
- }  --* simbolo especial --*19
- cin  --* palabra reservada --* 20
- r  --* identificador --*20
- ;  --* simbolo especial --*20
- do  --* palabra reservada --* 21
- cout  --* palabra reservada --* 22
+ z  --* identificador --*16
+ =  --* operador aritmetico --*16
+ 24 --* entero --* 16
+ ;  --* simbolo especial --*16
+ end  --* palabra reservada --* 17
+ }  --* simbolo especial --*18
+ cin  --* palabra reservada --* 19
+ r  --* identificador --*19
+ ;  --* simbolo especial --*19
+ do  --* palabra reservada --* 20
+ cout  --* palabra reservada --* 21
+ x  --* identificador --*21
+ ;  --* simbolo especial --*21
+ until  --* palabra reservada --* 22
+ (  --* simbolo especial --*22
  x  --* identificador --*22
+ < --* operador relacional --*22
+ 100 --* entero --* 22
+ )  --* simbolo especial --*22
  ;  --* simbolo especial --*22
- until  --* palabra reservada --* 23
- (  --* simbolo especial --*23
- x  --* identificador --*23
- < --* operador relacional --*23
- 100 --* entero --* 23
- )  --* simbolo especial --*23
- ;  --* simbolo especial --*23
- }  --* simbolo especial --*24
+ }  --* simbolo especial --*23

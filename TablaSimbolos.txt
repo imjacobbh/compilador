@@ -1,10 +1,12 @@
 Nombre          | Tipo       | Valor     | # Registro (loc) | Líneas
 -----------------------------------------
-y               |  int       | 12        | 0                | 2, 14
-z               |  int       | 24        | 1                | 2, 17
-i               |  int       | 2         | 2                | 2, 3
-x               |  float     | 12.42     | 3                | 4, 6, 13
-a               |  float     | 1.0       | 4                | 4, 5
-b               |  float     | 1.0       | 5                | 4, 5
-c               |  float     | 1.0       | 6                | 4, 5
-w               |  float     | 0         | 7                | 4
+y               |  int       | 12        | 0                | 2, 13
+z               |  int       | 24        | 1                | 2, 16
+i               |  int       | 0         | 2                | 2
+truee           |  boolean   | False     | 3                | 3
+falsee          |  boolean   | False     | 4                | 3
+x               |  float     | 3.0       | 5                | 4, 6, 9, 12
+a               |  float     | 1.0       | 6                | 4, 5
+b               |  float     | 1.0       | 7                | 4, 5
+c               |  float     | 1.0       | 8                | 4, 5
+w               |  float     | 0         | 9                | 4

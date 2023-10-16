@@ -1,5 +1,3 @@
 Error linea 7: tipo erroneo
-Error linea 9: tipo erroneo
-Error Línea 8: La expresión no es booleana.
-Error linea 12: tipo erroneo
-Error Línea 16: La expresión no es booleana.
+Error linea 11: tipo erroneo
+Error Línea 15: La expresión no es booleana.

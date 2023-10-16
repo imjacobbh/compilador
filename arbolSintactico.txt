@@ -6,11 +6,10 @@ Programa
  |  |  |  | y
  |  |  |  | z
  |  |  |  | i
- |  | Asignación
- |  |  | i
- |  |  | +
- |  |  |  | 1
- |  |  |  | 1
+ |  | DeclaraciónBoolean
+ |  |  | IdList
+ |  |  |  | truee
+ |  |  |  | falsee
  |  | DeclaraciónFloat
  |  |  | IdList
  |  |  |  | x
@@ -44,13 +43,13 @@ Programa
  |  |  |  | 3.14
  |  |  |  | 0
  |  | SentenciaIf
- |  |  | +
+ |  |  | <
  |  |  |  | i
  |  |  |  | 2
  |  |  | Sentencias
  |  |  |  | Asignación
- |  |  |  |  | z
- |  |  |  |  | 24.1
+ |  |  |  |  | x
+ |  |  |  |  | 2.0
  |  | Asignación
  |  |  | z
  |  |  | 2.1
@@ -63,9 +62,7 @@ Programa
  |  |  | y
  |  |  | 12
  |  | SentenciaWhile
- |  |  | <
- |  |  |  | z
- |  |  |  | w
+ |  |  | truee
  |  |  | Bloque
  |  |  |  | Sentencias
  |  |  |  |  | SentenciaIf
