@@ -285,7 +285,7 @@ class Parser:
             self.match("(")
             root = self.expr()
             self.match(")")
-        elif self.current_token and self.current_token.token_type in ["id", "num"]:
+        elif self.current_token and self.current_token.token_type in ["id", "num", "true", "false"]:
             root = Node(self.current_token.value, self.current_token.line_no)
             self.match(self.current_token.token_type)
         else:
@@ -489,6 +489,14 @@ class SymbolTable:
                 node.type = "float"
                 node.val = float(node.value)
                 return float(node.value)
+            elif node.value == "true":
+                node.type = "boolean"
+                node.val = "true"
+                return True
+            elif node.value == "false":
+                node.type = "boolean"
+                node.val = "false"
+                return False
             else:
                 # Handle variable lookup here
                 var_name = node.value
@@ -542,7 +550,7 @@ def semantic_analysis(node, symbol_table):
     # Define una función para verificar si la expresión es booleana
     def check_boolean_expr(expr_node):
         # Esta función verifica si la expresión es booleana.
-        comparison_operators = ["<", ">", "<=", ">=", "==", "!="]
+        comparison_operators = ["<", ">", "<=", ">=", "==", "!=", "true", "false"]
 
         if expr_node.value in comparison_operators:
             return True

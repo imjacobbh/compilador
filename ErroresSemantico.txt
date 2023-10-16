@@ -1,3 +1,2 @@
 Error linea 7: tipo erroneo
 Error linea 11: tipo erroneo
-Error Línea 15: La expresión no es booleana.

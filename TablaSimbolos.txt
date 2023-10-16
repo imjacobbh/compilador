@@ -1,9 +1,9 @@
 Nombre          | Tipo       | Valor     | # Registro (loc) | Líneas
 -----------------------------------------
 y               |  int       | 12        | 0                | 2, 13
-z               |  int       | 24        | 1                | 2, 16
+z               |  int       | 24        | 1                | 2, 17
 i               |  int       | 0         | 2                | 2
-truee           |  boolean   | False     | 3                | 3
+truee           |  boolean   | False     | 3                | 3, 14
 falsee          |  boolean   | False     | 4                | 3
 x               |  float     | 3.0       | 5                | 4, 6, 9, 12
 a               |  float     | 1.0       | 6                | 4, 5

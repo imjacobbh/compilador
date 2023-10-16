@@ -61,12 +61,15 @@ Programa
  |  | Asignación
  |  |  | y
  |  |  | 12
- |  | SentenciaWhile
+ |  | Asignación
  |  |  | truee
+ |  |  | false
+ |  | SentenciaWhile
+ |  |  | false
  |  |  | Bloque
  |  |  |  | Sentencias
  |  |  |  |  | SentenciaIf
- |  |  |  |  |  | +
+ |  |  |  |  |  | <
  |  |  |  |  |  |  | i
  |  |  |  |  |  |  | 1
  |  |  |  |  |  | Sentencias

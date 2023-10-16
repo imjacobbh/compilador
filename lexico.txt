@@ -77,35 +77,39 @@
  =  --* operador aritmetico --*13
  12 --* entero --* 13
  ;  --* simbolo especial --*13
- while  --* palabra reservada --* 14
- (  --* simbolo especial --*14
  truee  --* identificador --*14
- )  --* simbolo especial --*14
- {  --* simbolo especial --*14
- if  --* palabra reservada --* 15
+ =  --* operador aritmetico --*14
+ false  --* palabra reservada --* 14
+ ;  --* simbolo especial --*14
+ while  --* palabra reservada --* 15
  (  --* simbolo especial --*15
- i  --* identificador --*15
- +  --* operador aritmetico --*15
- 1 --* entero --* 15
+ false  --* palabra reservada --* 15
  )  --* simbolo especial --*15
- z  --* identificador --*16
- =  --* operador aritmetico --*16
- 24 --* entero --* 16
- ;  --* simbolo especial --*16
- end  --* palabra reservada --* 17
- }  --* simbolo especial --*18
- cin  --* palabra reservada --* 19
- r  --* identificador --*19
- ;  --* simbolo especial --*19
- do  --* palabra reservada --* 20
- cout  --* palabra reservada --* 21
- x  --* identificador --*21
- ;  --* simbolo especial --*21
- until  --* palabra reservada --* 22
- (  --* simbolo especial --*22
+ {  --* simbolo especial --*15
+ if  --* palabra reservada --* 16
+ (  --* simbolo especial --*16
+ i  --* identificador --*16
+ < --* operador relacional --*16
+ 1 --* entero --* 16
+ )  --* simbolo especial --*16
+ z  --* identificador --*17
+ =  --* operador aritmetico --*17
+ 24 --* entero --* 17
+ ;  --* simbolo especial --*17
+ end  --* palabra reservada --* 18
+ }  --* simbolo especial --*19
+ cin  --* palabra reservada --* 20
+ r  --* identificador --*20
+ ;  --* simbolo especial --*20
+ do  --* palabra reservada --* 21
+ cout  --* palabra reservada --* 22
  x  --* identificador --*22
- < --* operador relacional --*22
- 100 --* entero --* 22
- )  --* simbolo especial --*22
  ;  --* simbolo especial --*22
- }  --* simbolo especial --*23
+ until  --* palabra reservada --* 23
+ (  --* simbolo especial --*23
+ x  --* identificador --*23
+ < --* operador relacional --*23
+ 100 --* entero --* 23
+ )  --* simbolo especial --*23
+ ;  --* simbolo especial --*23
+ }  --* simbolo especial --*24
