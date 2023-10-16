@@ -3,104 +3,90 @@ Programa
  | Sentencias
  |  | DeclaraciónInt
  |  |  | IdList
- |  |  |  | x
  |  |  |  | y
+ |  |  |  | x
+ |  |  |  | i
+ |  |  |  | z
  |  | DeclaraciónFloat
  |  |  | IdList
+ |  |  |  | i
+ |  |  |  | z
+ |  | Asignación
+ |  |  | i
+ |  |  | +
+ |  |  |  | 1
+ |  |  |  | 1
+ |  | DeclaraciónFloat
+ |  |  | IdList
+ |  |  |  | x
  |  |  |  | a
+ |  |  |  | b
+ |  |  |  | c
  |  |  |  | w
  |  | Asignación
- |  |  | z
- |  |  | 2
+ |  |  | a
+ |  |  | 1.0
  |  | Asignación
- |  |  | w
- |  |  | 3.24
+ |  |  | b
+ |  |  | 1.0
+ |  | Asignación
+ |  |  | c
+ |  |  | 1.0
  |  | Asignación
  |  |  | x
- |  |  | -
- |  |  |  | +
+ |  |  | +
+ |  |  |  | *
+ |  |  |  |  | 3.14
+ |  |  |  |  | +
+ |  |  |  |  |  | +
+ |  |  |  |  |  |  | a
+ |  |  |  |  |  |  | b
+ |  |  |  |  |  | c
+ |  |  |  | i
+ |  | Asignación
+ |  |  | i
+ |  |  | *
+ |  |  |  | 3.14
+ |  |  |  | 0
+ |  | SentenciaIf
+ |  |  | +
+ |  |  |  | i
+ |  |  |  | 2
+ |  |  | Sentencias
+ |  |  |  | Asignación
  |  |  |  |  | z
- |  |  |  |  | *
- |  |  |  |  |  | w
- |  |  |  |  |  | 3
- |  |  |  | 6
+ |  |  |  |  | 24.1
+ |  | Asignación
+ |  |  | z
+ |  |  | 2.1
+ |  | Asignación
+ |  |  | x
+ |  |  | +
+ |  |  |  | x
+ |  |  |  | 1
  |  | Asignación
  |  |  | y
  |  |  | 12
  |  | SentenciaWhile
- |  |  | <=
+ |  |  | <
  |  |  |  | z
  |  |  |  | w
  |  |  | Bloque
  |  |  |  | Sentencias
  |  |  |  |  | SentenciaIf
- |  |  |  |  |  | ==
+ |  |  |  |  |  | +
  |  |  |  |  |  |  | i
  |  |  |  |  |  |  | 1
  |  |  |  |  |  | Sentencias
  |  |  |  |  |  |  | Asignación
  |  |  |  |  |  |  |  | z
- |  |  |  |  |  |  |  | w
- |  |  |  |  |  |  | Asignación
- |  |  |  |  |  |  |  | i
- |  |  |  |  |  |  |  | 2
- |  |  |  |  |  |  | SentenciaIf
- |  |  |  |  |  |  |  | !=
- |  |  |  |  |  |  |  |  | i
- |  |  |  |  |  |  |  |  | 5
- |  |  |  |  |  |  |  | Sentencias
- |  |  |  |  |  |  |  |  | Asignación
- |  |  |  |  |  |  |  |  |  | i
- |  |  |  |  |  |  |  |  |  | +
- |  |  |  |  |  |  |  |  |  |  | i
- |  |  |  |  |  |  |  |  |  |  | 1
- |  |  |  |  |  |  |  |  | SentenciaIf
- |  |  |  |  |  |  |  |  |  | >
- |  |  |  |  |  |  |  |  |  |  | i
- |  |  |  |  |  |  |  |  |  |  | 5
- |  |  |  |  |  |  |  |  |  | Sentencias
- |  |  |  |  |  |  |  |  |  |  | Asignación
- |  |  |  |  |  |  |  |  |  |  |  | i
- |  |  |  |  |  |  |  |  |  |  |  | 2
- |  |  |  |  |  |  |  | Sentencias
- |  |  |  |  |  |  |  |  | Asignación
- |  |  |  |  |  |  |  |  |  | i
- |  |  |  |  |  |  |  |  |  | -
- |  |  |  |  |  |  |  |  |  |  | i
- |  |  |  |  |  |  |  |  |  |  | 1
- |  |  |  |  |  | Sentencias
- |  |  |  |  |  |  | Asignación
- |  |  |  |  |  |  |  | y
- |  |  |  |  |  |  |  | x
+ |  |  |  |  |  |  |  | 24
  |  | SentenciaInput
  |  |  | IdList
  |  |  |  | r
- |  | Asignación
- |  |  | x
- |  |  | -
- |  |  |  | x
- |  |  |  | 1
- |  | Asignación
- |  |  | i
- |  |  | +
- |  |  |  | i
- |  |  |  | 1
- |  | Asignación
- |  |  | i
- |  |  | +
- |  |  |  | i
- |  |  |  | 1
- |  | Asignación
- |  |  | x
- |  |  | 0
  |  | SentenciaDo
- |  |  | Asignación
- |  |  |  | x
- |  |  |  | +
- |  |  |  |  | x
- |  |  |  |  | 5
  |  |  | SentenciaOutput
  |  |  |  | x
- |  |  | >=
+ |  |  | <
  |  |  |  | x
  |  |  |  | 100

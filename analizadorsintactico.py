@@ -1,14 +1,26 @@
 # -*- coding: utf-8 -*-
+
+
+
 class Token:
-    def __init__(self, token_type, value):
+    def __init__(self, token_type, value, line_no):
         self.token_type = token_type
         self.value = value
-
+        self.line_no = line_no
+errores_semantico = []
 
 class Node:
-    def __init__(self, value, children=None):
+    def __init__(
+        self,
+        value,
+        line_no=None,
+        children=None,
+    ):
         self.value = value
         self.children = children or []
+        self.line_no = line_no or None
+        self.type = None  # Nuevo atributo para el tipo
+        self.val = None  # Nuevo atributo para el valor
 
     def add_child(self, node):
         self.children.append(node)
@@ -65,10 +77,17 @@ class Parser:
             "cout",
         ]:
             root.add_child(self.stmt())
-        while self.current_token and self.current_token.token_type != "}" and self.current_token.token_type != "end":
+        while (
+            self.current_token
+            and self.current_token.token_type != "}"
+            and self.current_token.token_type != "end"
+        ):
             if self.current_token.token_type == "do":
                 root.add_child(self.do_while_stmt())
-            elif  self.current_token.value == "end" or self.current_token.token_type == "else":
+            elif (
+                self.current_token.value == "end"
+                or self.current_token.token_type == "else"
+            ):
                 return root
             else:
                 root.add_child(self.stmt())
@@ -89,27 +108,28 @@ class Parser:
 
     def stmt(self):
         if self.current_token and self.current_token.token_type == "int":
-            root = Node("DeclaraciónInt")
+            root = Node("DeclaraciónInt", self.current_token.line_no)
             self.match("int")
             root.add_child(self.idList())
             self.match(";")
         elif self.current_token and self.current_token.token_type == "do":
             root = self.do_while_stmt()
         elif self.current_token and self.current_token.token_type == "float":
-            root = Node("DeclaraciónFloat")
+            root = Node("DeclaraciónFloat", self.current_token.line_no)
             self.match("float")
             root.add_child(self.idList())
             self.match(";")
         elif self.current_token and self.current_token.token_type == "id":
-            root = Node("Asignación")
-            id_node = Node(self.current_token.value)
+            root = Node("Asignación", self.current_token.line_no)
+            id_node = Node(self.current_token.value, self.current_token.line_no)
             self.match("id")
             root.add_child(id_node)
             if self.current_token and self.current_token.token_type in ["++", "--"]:
                 op_node = None
-                if(self.current_token.token_type =="++"):
+                if self.current_token.token_type == "++":
                     op_node = Node("+")
-                else:     op_node = Node("-")
+                else:
+                    op_node = Node("-")
                 op_node.add_child(id_node)
                 self.match(self.current_token.token_type)
                 op_node.add_child(Node("1"))
@@ -122,13 +142,15 @@ class Parser:
                 "==",
                 "!=",
             ]:
-                op_node = Node(self.current_token.value)
+                op_node = Node(self.current_token.value, self.current_token.line_no)
                 self.match(self.current_token.token_type)
                 if self.current_token and self.current_token.token_type in [
                     "id",
                     "num",
                 ]:
-                    operand_node = Node(self.current_token.value)
+                    operand_node = Node(
+                        self.current_token.value, self.current_token.line_no
+                    )
                     root.add_child(operand_node)
                     self.match(self.current_token.token_type)
             else:
@@ -136,9 +158,9 @@ class Parser:
                 expr_node = self.expr()
                 root.add_child(expr_node)
             self.match(";")
-      #      root.add_child(id_node)
+        #      root.add_child(id_node)
         elif self.current_token and self.current_token.token_type == "if":
-            root = Node("SentenciaIf")
+            root = Node("SentenciaIf", self.current_token.line_no)
             self.match("if")
 
             if self.current_token and self.current_token.token_type == "(":
@@ -164,7 +186,7 @@ class Parser:
             self.match("end")
 
         elif self.current_token and self.current_token.token_type == "while":
-            root = Node("SentenciaWhile")
+            root = Node("SentenciaWhile", self.current_token.line_no)
             self.match("while")
             self.match("(")
             expr_node = self.expr()
@@ -173,18 +195,18 @@ class Parser:
             stmt_node = self.stmt()
             root.add_child(stmt_node)
         elif self.current_token and self.current_token.token_type == "{":
-            root = Node("Bloque")
+            root = Node("Bloque", self.current_token.line_no)
             self.match("{")
             root.add_child(self.stmts())
             self.match("}")
         elif self.current_token and self.current_token.token_type == "cin":
-            root = Node("SentenciaInput")
-            
+            root = Node("SentenciaInput", self.current_token.line_no)
+
             self.match("cin")
             root.add_child(self.idList())
             self.match(";")
         elif self.current_token and self.current_token.token_type == "cout":
-            root = Node("SentenciaOutput")
+            root = Node("SentenciaOutput", self.current_token.line_no)
             self.match("cout")
             root.add_child(self.expr())
             self.match(";")
@@ -195,39 +217,44 @@ class Parser:
                 self.errors.append(f"Sentencia inválida: {error_token}")
             self.advance()
         return root
-    
+
     def idList(self):
         root = Node("IdList")
-        id_node = Node(self.current_token.value)
+        id_node = Node(self.current_token.value, self.current_token.line_no)
         root.add_child(id_node)
         self.match("id")
-        while self.current_token and  self.current_token.value ==","  and  self.current_token.value !=";":
+        while (
+            self.current_token
+            and self.current_token.value == ","
+            and self.current_token.value != ";"
+        ):
             self.match(",")
-            id_node = Node(self.current_token.value)
+            id_node = Node(self.current_token.value, self.current_token.line_no)
             root.add_child(id_node)
             self.match("id")
-            
+
         return root
+
     def expr(self):
         root = self.term()
         while self.current_token and self.current_token.token_type in ["+", "-"]:
-            op_node = Node(self.current_token.value)
+            op_node = Node(self.current_token.value, self.current_token.line_no)
             self.match(self.current_token.token_type)
             op_node.add_child(root)
             root = op_node
             root.add_child(self.term())
-        
+
         return root
 
     def term(self):
         root = self.factor()
         while self.current_token and self.current_token.token_type in ["*", "/"]:
-            op_node = Node(self.current_token.value)
+            op_node = Node(self.current_token.value, self.current_token.line_no)
             self.match(self.current_token.token_type)
             op_node.add_child(root)
             root = op_node
             root.add_child(self.factor())
-        
+
         return root
 
     def factor(self):
@@ -240,12 +267,12 @@ class Parser:
             "==",
             "!=",
         ]:
-            op_node = Node(self.current_token.value)
+            op_node = Node(self.current_token.value, self.current_token.line_no)
             self.match(self.current_token.token_type)
             op_node.add_child(root)
             root = op_node
             root.add_child(self.primary())
-        
+
         return root
 
     def primary(self):
@@ -254,25 +281,15 @@ class Parser:
             root = self.expr()
             self.match(")")
         elif self.current_token and self.current_token.token_type in ["id", "num"]:
-            root = Node(self.current_token.value)
+            root = Node(self.current_token.value, self.current_token.line_no)
             self.match(self.current_token.token_type)
         else:
             root = Node("Error")
             error_token = self.current_token.value if self.current_token else None
             self.errors.append(f"Factor inválido: {error_token}")
             self.advance()
-        
+
         return root
-    
-    # def expr(self):
-    # root = self.term()
-    # while self.current_token and self.current_token.token_type in ["+", "-"]:
-    #     op_node = Node(self.current_token.value)
-    #     self.match(self.current_token.token_type)
-    #     op_node.add_child(root)  # Agregar el subárbol actual como hijo del nodo de operador
-    #     root = op_node  # El subárbol actual se convierte en el nuevo nodo raíz
-    #     root.add_child(self.term())  # Agregar el siguiente término como hijo del nodo de operador
-    # return root
 
     def relational_expr(self):
         root = self.term()
@@ -284,42 +301,16 @@ class Parser:
             "==",
             "!=",
         ]:
-            op_node = Node(self.current_token.value)
+            op_node = Node(self.current_token.value, self.current_token.line_no)
             self.match(self.current_token.token_type)
             root.add_child(op_node)
             if self.current_token and self.current_token.token_type in ["id", "num"]:
-                operand_node = Node(self.current_token.value)
+                operand_node = Node(
+                    self.current_token.value, self.current_token.line_no
+                )
                 root.add_child(operand_node)
                 self.match(self.current_token.token_type)
         return root
-
-    # def term(self):
-    #     root = self.factor()
-    #     while self.current_token and self.current_token.value in ["*", "/"]:
-    #         op_node = Node(self.current_token.value)
-    #         self.match(self.current_token.token_type)
-    #         root.add_child(op_node)
-    #         root.add_child(self.factor())
-    #     return root
-
-    # def factor(self):
-    #     root = Node("Factor")
-    #     if self.current_token and self.current_token.token_type == "(":
-    #         self.match("(")
-    #         root.add_child(self.expr())
-    #         self.match(")")
-    #     elif self.current_token and self.current_token.token_type in ["id", "num"]:
-    #         value = self.current_token.value if self.current_token else None
-    #         if value is not None:
-    #             value_node = Node(value)
-    #             root.add_child(value_node)
-    #         self.match(self.current_token.token_type)
-    #     else:
-    #         root = Node("Error")
-    #         error_token = self.current_token.value if self.current_token else None
-    #         self.errors.append(f"Factor inválido: {error_token}")
-    #         self.advance()
-    #     return root
 
     def parse(self):
         ast = self.program()
@@ -353,11 +344,12 @@ for line in lines:
         else:
             token_type = token_parts[0].strip()
             value = token_parts[0].strip()
-        token = Token(token_type, value)
+        line_no = token_parts[2].strip()
+        token = Token(token_type, value, line_no)
         token_list.append(token)
 # # Imprimir la lista de objetos Token
 # for tok in token_list:
-#    print (tok.token_type, tok.value)
+#    print (tok.token_type, tok.value, tok.line_no)
 
 
 parser = Parser(token_list)
@@ -371,22 +363,260 @@ if parser.errors:
     print("Errores de sintaxis:")
     # f.write("Errores de sintaxis:")
     for error in parser.errors:
-        f.write(error+"\n")
+        f.write(error + "\n")
         print(error)
 f.close()
 
 # Imprimir AST
 f = open("arbolSintactico.txt", "w", encoding="utf-8")
-print("Arbol de Sintactico:")
 f.write("Arbol Sintactico")
-def print_ast(node, level=0, is_last_child=False):
+
+
+def print_ast(node, level=0, is_last_child=False, annotations=False):
     indent = " | " * level
-   # child_prefix = " -- " if is_last_child else "| -- "
-    print(f"{indent}{node.value}")
-    f.write(f"\n{indent}{node.value}")
+    # child_prefix = " -- " if is_last_child else "| -- "
+    print(
+        f"{indent}{node.value} (Linea: {node.line_no}) [Tipo: {node.type}] [Valor: {node.val}]"
+    )
+    if not annotations:
+        f.write(f"\n{indent}{node.value}")
+    else: 
+        f.write( f"\n{indent}{node.value} (Linea: {node.line_no}) [Tipo: {node.type}] [Valor: {node.val}]")
     for i, child in enumerate(node.children):
         is_last = i == len(node.children) - 1
-        print_ast(child, level + 1, is_last)
+        print_ast(child, level + 1, is_last, annotations= annotations)
+
+
+class SymbolTable:
+    location = 0
+
+    def __init__(self):
+        self.symbols = {}
+
+    def insert(self, name, value, datatype, location, line, shouldntExist=False):
+        if name in self.symbols:
+            if shouldntExist:
+                errores_semantico.append(f"Error Linea {line}: La variable {name}, ya se declaro previamente")
+                return
+            # Resolución de colisiones por encadenamiento
+            var = self.lookup(name)
+            self.symbols[name]["values"][-1] = (
+                value,
+                datatype,
+                var[2]
+            )
+            self.symbols[name]["lines"].append(line)
+        else:
+            self.symbols[name] = {
+                "values": [(value, datatype, self.location)],
+                "lines": [line],
+            }
+            self.location = self.location + 1
+
+    def lookup(self, name):
+        if name in self.symbols:
+            return self.symbols[name]["values"][-1]
+        else:
+            return None
+
+    def evaluate_expression(self, node):
+        if node.value in ("+", "-", "*", "/", "%"):
+            left_value = self.evaluate_expression(node.children[0])
+            right_value = self.evaluate_expression(node.children[1])
+            if left_value is None or right_value is None:
+                raise ValueError(f"Error in expression at line {node.line_no}")
+
+            if type(left_value) != type(right_value):
+                node.type = "float"
+#                raise ValueError(f"Type mismatch at line {node.line_no}")
+            else:
+                node.type = node.children[0].type
+            if node.value == "+":
+                node.val = left_value + right_value
+                return left_value + right_value
+            elif node.value == "-":
+                node.val = left_value - right_value
+                return left_value - right_value
+            elif node.value == "*":
+                node.val = left_value * right_value
+                return left_value * right_value
+            elif node.value == "/":
+                node.val = left_value / right_value
+                return left_value / right_value
+            elif node.value == "%":
+                node.val = left_value % right_value
+                return left_value % right_value
+        elif node.value in ("==", "<=", "<", ">", ">=", "!="):
+            left_value = self.evaluate_expression(node.children[0])
+            right_value = self.evaluate_expression(node.children[1])
+            if left_value is None or right_value is None:
+                raise ValueError(f"Error in expression at line {node.line_no}")
+
+            #if type(left_value) != type(right_value):
+                #raise ValueError(f"Type mismatch at line {node.line_no}")
+            node.type = "boolean"
+            if node.value == "==":
+                node.val = left_value == right_value
+                return left_value == right_value
+            elif node.value == "<=":
+                node.val = left_value <= right_value
+                return left_value <= right_value
+            elif node.value == "<":
+                node.val = left_value < right_value
+                return left_value < right_value
+            elif node.value == ">":
+                node.val = left_value > right_value
+                return left_value > right_value
+            elif node.value == ">=":
+                node.val = left_value >= right_value
+                return left_value >= right_value
+            elif node.value == "!=":
+                node.val = left_value != right_value
+                return left_value != right_value
+        else:
+            # Handle variables or constants
+            if self.is_int(node.value):
+                node.type = "int"
+                node.val = int(node.value)
+                return int(node.value)
+            elif self.is_float(node.value):
+                node.type = "float"
+                node.val = float(node.value)
+                return float(node.value)
+            else:
+                # Handle variable lookup here
+                var_name = node.value
+                var_info = self.lookup(var_name)
+                if var_info[1] == "int":
+                    node.val = var_info[0]
+                    node.type = var_info[1]
+                    return var_info[0]
+                elif var_info[1] == "float":
+                    node.val = var_info[0]
+                    node.type = var_info[1]
+                    return var_info[0]
+                else:
+                    raise ValueError(f"Type error at line {node.line_no}")
+            
+    def is_float(self, value):
+        try:
+            float_value = float(value)
+            # TODO: CHECAR SI FORZOSAMENTE DEBEN LLEVAR PUNTO O NO
+            # if "." in value:
+            #   return True
+            # else:
+            return True
+        except ValueError:
+            return False
+
+    def is_int(self, value):
+        try:
+            int(value)
+            return True
+        except ValueError:
+            return False
+
+    def print_symbol_table(self):
+        f.write("Nombre          | Tipo       | Valor     | # Registro (loc) | Líneas\n")
+        f.write("-----------------------------------------\n")
+        for name, symbol_info in self.symbols.items():
+            for value, datatype, location in symbol_info["values"]:
+                lines = ", ".join(str(line) for line in symbol_info["lines"])
+                line_str = f"{name.ljust(15)} |  {datatype.ljust(9)} | {str(value).ljust(9)} | {str(location).ljust(16)} | {lines}\n"
+                f.write(line_str)
+
+
+def semantic_analysis(node, symbol_table):
+    # Define una función para verificar si la expresión es booleana
+    def check_boolean_expr(expr_node):
+        # Esta función verifica si la expresión es booleana.
+        comparison_operators = ["<", ">", "<=", ">=", "==", "!="]
+
+        if expr_node.value in comparison_operators:
+            return True
+        else:
+            return False
+
+    if node is None:
+        return
+
+    if node.value == "DeclaraciónInt":
+        datatype = "int"
+    elif node.value == "DeclaraciónFloat":
+        datatype = "float"
+    else:
+        datatype = None
+
+    if datatype:
+        id_list = node.children[0]
+        for id_node in id_list.children:
+            id_node.type = datatype
+            id_node.val = 0
+            symbol_table.insert(id_node.value, 0, datatype, None, node.line_no, shouldntExist=True)
+
+    for child in node.children:
+        semantic_analysis(child, symbol_table)
+
+    if node.value == "Asignación":
+        var_name = node.children[0].value
+        symbol_info = symbol_table.lookup(var_name)
+        if not symbol_info:
+            print(f"Error linea {node.line_no}: La variable '{var_name}' no se declaró antes de usarse.")
+            errores_semantico.append(f"Error linea {node.line_no}: La variable '{var_name}' no se declaró antes de usarse.")
+        else:
+            node.children[0].type = symbol_info[1]
+            var_type = symbol_info[1]
+            var_value = symbol_table.evaluate_expression(node.children[1])
+            if(node.children[1].type != node.children[0].type):
+                print(f"Error linea {node.line_no}: tipo erroneo")
+                errores_semantico.append(f"Error linea {node.line_no}: tipo erroneo")
+            #TODO: SOLO SE ASIGNA Y SE GUARDA EN MEMORIA SI ES CORRECTO EL TIPADO, DLC, NO SE ACTUALIZA VARIABLE
+            else: 
+                node.val = var_value
+                node.type = var_type
+                node.children[0].val = var_value
+                symbol_table.insert(var_name, var_value, var_type, None, node.line_no)
+
+    if node.value == "SentenciaIf" or node.value == "SentenciaWhile":
+        # Verificar si la expresión es booleana
+        expr_node = node.children[0]  # Asume que la expresión está en el primer hijo
+        if not check_boolean_expr(expr_node):
+            print(f"Error Línea {expr_node.line_no}: La expresión no es booleana.")
+            errores_semantico.append(f"Error Línea {expr_node.line_no}: La expresión no es booleana.")
+        else:
+            var_value = symbol_table.evaluate_expression(node.children[0])
+            node.val = var_value
+    if node.value == "SentenciaDo":
+        expr_node = node.children[1]  # Asume que la expresión está en el 2ndo hijo
+        if not check_boolean_expr(expr_node):
+            print(
+                f"Error Línea {expr_node.line_no}: La expresión en la sentencia Do-Until no es booleana."
+            )
+            errores_semantico.append(f"Error Línea {expr_node.line_no}: La expresión en la sentencia Do-Until no es booleana.")
+        else:
+            var_value = symbol_table.evaluate_expression(node.children[1])
+            node.val = var_value
+
+
+root_node = ast
+
+symbol_table = SymbolTable()
+semantic_analysis(root_node, symbol_table)
 
 print_ast(ast)
+f.close()
+# Imprimir arbol con anotaciones a txt
+f = open("ArbolAnotaciones.txt", "w", encoding="utf-8")
+print_ast(ast, annotations= True)
+f.close()
+#Imprimir tabla de simboloas a txt
+f = open("TablaSimbolos.txt", "w", encoding="utf-8")
+symbol_table.print_symbol_table()
+f.close()
+#Imprimir errores semantico a txt
+f = open("ErroresSemantico.txt", "w", encoding="utf-8")
+if errores_semantico:
+
+    for error in errores_semantico:
+        f.write(error + "\n")
 f.close()

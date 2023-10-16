@@ -100,9 +100,9 @@ while i < len(contenidodecodigo):
             j += 1
         token = contenidodecodigo[i:j]
         if token in palabras_reservadas:
-            tokens.append(" " + token + "  --* " + palabras_reservadas[token] + " --* ")
+            tokens.append(" " + token + "  --* " + palabras_reservadas[token] + " --* " + str(linea))
         else:
-            tokens.append(" " + token + "  --* identificador --*")
+            tokens.append(" " + token + "  --* identificador --*" + str(linea))
         col += j - i
         i = j
         continue
@@ -114,35 +114,35 @@ while i < len(contenidodecodigo):
             j += 1
             while j < len(contenidodecodigo) and contenidodecodigo[j].isdigit():
                 j += 1
-            tokens.append(" " + contenidodecodigo[i:j] + " --* flotante --* ")
+            tokens.append(" " + contenidodecodigo[i:j] + " --* flotante --* "+ str(linea))
         else:
-            tokens.append(" " + contenidodecodigo[i:j] + " --* entero --* ")
+            tokens.append(" " + contenidodecodigo[i:j] + " --* entero --* " + str(linea))
         col += j - i
         i = j
         continue
     # Identificar símbolos especiales
     if contenidodecodigo[i] in simbolos_especiales:
-        tokens.append(" " + contenidodecodigo[i] + "  --* simbolo especial --*")
+        tokens.append(" " + contenidodecodigo[i] + "  --* simbolo especial --*" + str(linea))
         i += 1
         col += 1
         continue
     # Identificar operadores aritméticos y relacionales
     if contenidodecodigo[i : i + 2] in operadores_relacionales:
-        tokens.append(" " + contenidodecodigo[i : i + 2] + " --* operador relacional --*")
+        tokens.append(" " + contenidodecodigo[i : i + 2] + " --* operador relacional --*" + str(linea))
         i += 2
         col += 2
         continue
     elif contenidodecodigo[i] in operadores_relacionales:
-        tokens.append(" " + contenidodecodigo[i] + " --* operador relacional --*")
+        tokens.append(" " + contenidodecodigo[i] + " --* operador relacional --*" + str(linea))
         i += 1
         continue
     if contenidodecodigo[i : i + 2] in operadores_dobles:
-        tokens.append(" " + contenidodecodigo[i : i + 2] + "--* operador aritmetico --*")
+        tokens.append(" " + contenidodecodigo[i : i + 2] + "--* operador aritmetico --*" + str(linea))
         i += 2
         col += 1
         continue
     elif contenidodecodigo[i] in operadores_aritmeticos:
-        tokens.append(" " + contenidodecodigo[i] + "  --* operador aritmetico --*")
+        tokens.append(" " + contenidodecodigo[i] + "  --* operador aritmetico --*"+ str(linea))
         i += 1
         col += 1
         continue

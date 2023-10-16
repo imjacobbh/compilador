@@ -1,2 +1,0 @@
-compilador.Token
-compilador.SyntaxAnalyzer
