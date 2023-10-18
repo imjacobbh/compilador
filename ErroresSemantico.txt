@@ -1,0 +1,2 @@
+Error linea 4: La variable 'mas' no se declaró antes de usarse.
+Error linea 5: La variable 'mas' no se declaró antes de usarse.

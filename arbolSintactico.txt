@@ -1,0 +1,17 @@
+Arbol Sintactico
+Programa
+ | Sentencias
+ |  | DeclaraciónInt
+ |  |  | IdList
+ |  |  |  | x
+ |  | SentenciaInput
+ |  |  | IdList
+ |  |  |  | x
+ |  | SentenciaInput
+ |  |  | IdList
+ |  |  |  | mas
+ |  | SentenciaOutput
+ |  |  | mas
+ |  | Asignación
+ |  |  | x
+ |  |  | 1

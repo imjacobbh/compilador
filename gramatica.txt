@@ -1,0 +1,27 @@
+programa -> main {lista-declaración }
+lista-declaración -> lista-declaración declaración | declaración
+declaración -> declaración-variable | lista-sententias
+declaración-variable -> tipo identificador ; |
+
+tipo -> int | real | float | boolean
+
+lista-sentencias -> listá-sentencia sentencia | vació
+
+sentencia -> selección | iteración | repetición | sent-in | sent-out| asignacion
+
+asignación -> identificador  =sent-expresión
+sent-expresión -> expresión; | ;
+
+selección -> if expresión lista-sentencias end | if expresión lista-sentencias else lista-sentencias end
+iteración -> while expresión lista-sentencias end
+repetición -> do lista-sentencias until expresión
+sent-in-> cin identificador ; 
+sent-out-> cout expresión;
+expresión-> expresión-simple relación-op expresión-simple | expresion-simple
+
+relacion-op ->  < = | < | > | >= | == | !=
+expresión-simple -> expresión-simple  suma-op termino | termino
+suma-op-> + | - | ++ | --
+termino -> termino mult-op factor | factor
+mult-op -> * | / | %
+factor ->  ( expresión ) | numero | identificador

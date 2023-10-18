@@ -22,6 +22,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.AbstractAction;
@@ -59,7 +61,7 @@ public class Interfaz extends javax.swing.JFrame {
     public String RutaActual = "";
     private LineNumber lineNumber;
     private boolean isNightMode;
-
+    String rutaActual = System.getProperty("user.dir");
     /**
      * Creates new form Interfaz
      */
@@ -160,7 +162,7 @@ public class Interfaz extends javax.swing.JFrame {
                                 matcher.end() - matcher.start(), attred, true);
                     }
                     //match tipo de datos
-                    Pattern tipoDeDatos = Pattern.compile("\\b(int|INT|real|REAL|boolean|BOOLEAN)\\b");
+                    Pattern tipoDeDatos = Pattern.compile("\\b(int|INT|real|REAL|boolean|float|FLOAT|BOOLEAN)\\b");
                     matcher = tipoDeDatos.matcher(text);
                     while (matcher.find()) {
                         setCharacterAttributes(matcher.start(),
@@ -229,7 +231,7 @@ public class Interfaz extends javax.swing.JFrame {
                             matcher.end() - matcher.start(), attred, true);
                 }
                 //match tipo de datos
-                Pattern tipoDeDatos = Pattern.compile("\\b(int|INT|real|REAL|boolean|BOOLEAN)\\b");
+                Pattern tipoDeDatos = Pattern.compile("\\b(int|INT|real|REAL|boolean|float|BOOLEAN)\\b");
                 matcher = tipoDeDatos.matcher(text);
                 while (matcher.find()) {
                     setCharacterAttributes(matcher.start(),
@@ -292,6 +294,9 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextAreaResultados = new javax.swing.JTextArea();
+        jPanel8 = new javax.swing.JPanel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jTextAreaTablaSimbolos = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextAreaErrores = new javax.swing.JTextArea();
@@ -310,6 +315,8 @@ public class Interfaz extends javax.swing.JFrame {
         jTextAreaCodigoIntermedio = new javax.swing.JTextArea();
         jScrollPane8 = new javax.swing.JScrollPane();
         TextAreaCodigo = new javax.swing.JTextPane();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jTextAreaTablaSimbolos2 = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -352,24 +359,57 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1312, Short.MAX_VALUE)
+            .addGap(0, 1319, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1295, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 158, Short.MAX_VALUE)
+            .addGap(0, 175, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
         jTabbedPane1.addTab("Resultado", jPanel2);
+
+        jPanel8.setBackground(new java.awt.Color(153, 153, 153));
+
+        jTextAreaTablaSimbolos.setEditable(false);
+        jTextAreaTablaSimbolos.setColumns(20);
+        jTextAreaTablaSimbolos.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        jTextAreaTablaSimbolos.setForeground(new java.awt.Color(102, 102, 102));
+        jTextAreaTablaSimbolos.setRows(5);
+        jTextAreaTablaSimbolos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane9.setViewportView(jTextAreaTablaSimbolos);
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1319, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel8Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 1295, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 175, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel8Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+
+        jTabbedPane1.addTab("Tabla de Simbolos", jPanel8);
 
         jPanel3.setBackground(new java.awt.Color(153, 153, 153));
         jPanel3.setAlignmentX(0.0F);
@@ -388,16 +428,16 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1312, Short.MAX_VALUE)
+            .addGap(0, 1319, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1295, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 158, Short.MAX_VALUE)
+            .addGap(0, 175, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -432,20 +472,20 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 533, Short.MAX_VALUE)
+            .addGap(0, 523, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 505, Short.MAX_VALUE)
+            .addGap(0, 516, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -463,20 +503,20 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 533, Short.MAX_VALUE)
+            .addGap(0, 523, Short.MAX_VALUE)
             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel5Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 505, Short.MAX_VALUE)
+            .addGap(0, 516, Short.MAX_VALUE)
             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel5Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -494,20 +534,20 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 533, Short.MAX_VALUE)
+            .addGap(0, 523, Short.MAX_VALUE)
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel6Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 505, Short.MAX_VALUE)
+            .addGap(0, 516, Short.MAX_VALUE)
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel6Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -525,20 +565,20 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 533, Short.MAX_VALUE)
+            .addGap(0, 523, Short.MAX_VALUE)
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel7Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 505, Short.MAX_VALUE)
+            .addGap(0, 516, Short.MAX_VALUE)
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel7Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -583,12 +623,22 @@ public class Interfaz extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(13, 12, 0, 0);
         jPanel1.add(jScrollPane8, gridBagConstraints);
 
+        jTextAreaTablaSimbolos2.setEditable(false);
+        jTextAreaTablaSimbolos2.setColumns(20);
+        jTextAreaTablaSimbolos2.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
+        jTextAreaTablaSimbolos2.setForeground(new java.awt.Color(102, 102, 102));
+        jTextAreaTablaSimbolos2.setRows(5);
+        jTextAreaTablaSimbolos2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane11.setViewportView(jTextAreaTablaSimbolos2);
+
+        jPanel1.add(jScrollPane11, new java.awt.GridBagConstraints());
+
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(291, 35));
 
         jMenu1.setText("Archivo");
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem1.setText("Abrir");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -597,7 +647,7 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem2.setText("Guardar");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -606,7 +656,7 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem2);
 
-        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.SHIFT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItem3.setText("Guardar Como...");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -681,11 +731,11 @@ public class Interfaz extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1341, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1348, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 777, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 799, Short.MAX_VALUE)
         );
 
         pack();
@@ -919,9 +969,13 @@ public class Interfaz extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jCheckBoxThemeStateChanged
 
+       
+
+    
     private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
         saveFile();
         executeLexico();
+   
     }//GEN-LAST:event_jMenu4ActionPerformed
 
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
@@ -946,13 +1000,13 @@ public class Interfaz extends javax.swing.JFrame {
         state.argv.append(new PyString(RutaActual));
         PythonInterpreter interpreter = new PythonInterpreter(null, state);
 
-        interpreter.execfile("C:\\Users\\Lenovo\\Documents\\JAVA\\Compilador\\Compilador\\AnalizadorLexico.py");
+        interpreter.execfile(rutaActual+"\\AnalizadorLexico.py");
 
         //abrir archivo lexemas
         jTextAreaLexico.setText("");
         BufferedReader in = null;
         try {
-            in = new BufferedReader(new FileReader("C:\\Users\\Lenovo\\Documents\\JAVA\\Compilador\\Compilador\\lexico.txt"));
+            in = new BufferedReader(new FileReader(rutaActual+"\\lexico.txt"));
             String str;
             while ((str = in.readLine()) != null) {
                 jTextAreaLexico.append(str + '\n');
@@ -965,12 +1019,12 @@ public class Interfaz extends javax.swing.JFrame {
             }
         }
         //abrir archivo de errores lexemas
-        jTextAreaErrores.setText("");
+        jTextAreaErrores.setText("Errores Lexico:\n" );
         try {
-            in = new BufferedReader(new FileReader("C:\\Users\\Lenovo\\Documents\\JAVA\\Compilador\\Compilador\\errors.txt"));
+            in = new BufferedReader(new FileReader(rutaActual+"\\errors.txt"));
             String str;
             while ((str = in.readLine()) != null) {
-                jTextAreaErrores.append(str + '\n');
+                jTextAreaErrores.append("\t" + str + '\n');
             }
         } catch (IOException e) {
         } finally {
@@ -979,8 +1033,109 @@ public class Interfaz extends javax.swing.JFrame {
             } catch (Exception ex) {
             }
         }
-
+            this.Sintactico();
     }
+
+    public void Sintactico(){
+        String rutaActual = System.getProperty("user.dir");
+        System.out.println("Ruta actual: " + rutaActual);
+        Path rutaNueva = Paths.get(rutaActual);
+        System.out.println("Ruta nueva: " + rutaNueva.toString());
+        //Path ruta = Paths.get(rutaNueva.toString(),"AnalizadorLexico");
+        //System.out.println(ruta);
+        Path rutaScript = Paths.get(rutaNueva.toString()).resolve("analizadorsintactico.py");
+        
+        try {
+            String salidaPython = PythonRunner.ejecutarScriptPython(rutaScript.toString());
+            this.jTextAreaSintacticp.setText(salidaPython);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //abrir archivo sintactico
+        jTextAreaSintacticp.setText("");
+        BufferedReader in = null;
+        try {
+            in = new BufferedReader(new FileReader(rutaActual + "\\ArbolSintactico.txt"));
+            String str;
+            while ((str = in.readLine()) != null) {
+                jTextAreaSintacticp.append(str + '\n');
+            }
+        } catch (IOException e) {
+        } finally {
+            try {
+                in.close();
+            } catch (Exception ex) {
+            }
+        }
+        //abrir archivo de errores sintactico
+        try {
+            jTextAreaErrores.append("\nErrores análisis sintactico: " + '\n');
+            in = new BufferedReader(new FileReader(rutaActual + "\\erroresSintactico.txt"));
+            String str;
+            while ((str = in.readLine()) != null) {
+                jTextAreaErrores.append("\t"+str + '\n');
+            }
+        } catch (IOException e) {
+        } finally {
+            try {
+                in.close();
+            } catch (Exception ex) {
+
+            }
+
+        }
+        //abrir archivo analisis semantico
+        this.jTextAreaSemantico.setText("");
+        try {
+            in = new BufferedReader(new FileReader(rutaActual + "\\ArbolAnotaciones.txt"));
+            String str;
+            while ((str = in.readLine()) != null) {
+                jTextAreaSemantico.append(str + '\n');
+            }
+        } catch (IOException e) {
+        } finally {
+            try {
+                in.close();
+            } catch (Exception ex) {
+            }
+        }
+         //abrir archivo tabla de simbolos
+        this.jTextAreaTablaSimbolos.setText("");
+        try {
+            in = new BufferedReader(new FileReader(rutaActual + "\\TablaSimbolos.txt"));
+            String str;
+            jTextAreaTablaSimbolos.append("\n");
+            while ((str = in.readLine()) != null) {
+                jTextAreaTablaSimbolos.append(str + '\n');
+            }
+        } catch (IOException e) {
+        } finally {
+            try {
+                in.close();
+            } catch (Exception ex) {
+            }
+        }
+        
+        //abrir archivo de errores semantico
+        try {
+            in = new BufferedReader(new FileReader(rutaActual + "\\ErroresSemantico.txt"));
+            String str;
+            jTextAreaErrores.append("\nErrores análisis semantico: " + '\n');
+            while ((str = in.readLine()) != null) {
+                jTextAreaErrores.append("\t"+str + '\n');
+            }
+        } catch (IOException e) {
+        } finally {
+            try {
+                in.close();
+            } catch (Exception ex) {
+
+            }
+
+        }
+    }
+    
+    
 
     private void tecla(java.awt.event.KeyEvent evt) {
         int keyCode = evt.getKeyCode();
@@ -1075,6 +1230,8 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1082,6 +1239,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane7;
     private javax.swing.JTextArea jTextAreaCodigoIntermedio;
@@ -1090,5 +1248,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextAreaResultados;
     private javax.swing.JTextArea jTextAreaSemantico;
     private javax.swing.JTextArea jTextAreaSintacticp;
+    private javax.swing.JTextArea jTextAreaTablaSimbolos;
+    private javax.swing.JTextArea jTextAreaTablaSimbolos2;
     // End of variables declaration//GEN-END:variables
 }

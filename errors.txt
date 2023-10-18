@@ -1,6 +1,0 @@
-error:'&'(linea:1, columna: 15)
-error:'@'(linea:1, columna: 24)
-error:'.'(linea:2, columna: 23)
-error:'.'(linea:2, columna: 29)
-error:'!'(linea:56, columna: 5)
-error:'.'(linea:56, columna: 13)
