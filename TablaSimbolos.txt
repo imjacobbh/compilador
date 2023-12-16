@@ -1,0 +1,6 @@
+Nombre          | Tipo       | Valor             | # Registro (loc) | Líneas
+--------------------------------------------------------------------------------
+numero          |  int       | 0                 | 0                | 2, 3, 8, 11
+positivo        |  int       | 0                 | 1                | 4, 5, 9
+negativo        |  int       | 1                 | 2                | 4, 6, 12
+nulo            |  int       | 2                 | 3                | 4, 7, 14

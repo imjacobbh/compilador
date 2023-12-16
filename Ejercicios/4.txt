@@ -1,0 +1,50 @@
+main {
+    int candidato_1;
+    int candidato_2;
+    int candidato_3;
+    int candidato_4;
+    int voto;
+    int total_votos;
+    candidato_1 = 0;
+    candidato_2 = 0;
+    candidato_3 = 0;
+    candidato_4 = 0;
+
+    do {
+        cin voto;
+        if (voto == 1) {
+            candidato_1++;
+        } else {
+            if (voto == 2) {
+                candidato_2++;
+            } 
+	else {
+                if (voto == 3) {
+                    candidato_3++;
+                } 
+	    else {
+                    if (voto == 4) {
+                        candidato_4++;
+                    }
+	        end
+                }
+	    end
+            }
+           end
+        } 
+        end
+    } until (voto!=0);//funciona como un do while jeje
+
+    total_votos = candidato_1 + candidato_2 + candidato_3 + candidato_4;
+    cout candidato_1;
+    cout (candidato_1 * 100) / total_votos;
+
+    cout  candidato_2;
+    cout  (candidato_2 * 100) / total_votos;
+
+    cout  candidato_3;
+    cout  (candidato_3 * 100) / total_votos;
+
+    cout candidato_4;
+    cout (candidato_4 * 100) / total_votos;
+}

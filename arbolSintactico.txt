@@ -1,0 +1,49 @@
+Arbol Sintactico
+Programa
+ | Sentencias
+ |  | DeclaraciónInt
+ |  |  | IdList
+ |  |  |  | numero
+ |  | SentenciaInput
+ |  |  | IdList
+ |  |  |  | numero
+ |  | DeclaraciónInt
+ |  |  | IdList
+ |  |  |  | positivo
+ |  |  |  | negativo
+ |  |  |  | nulo
+ |  | Asignación
+ |  |  | positivo
+ |  |  | 0
+ |  | Asignación
+ |  |  | negativo
+ |  |  | 1
+ |  | Asignación
+ |  |  | nulo
+ |  |  | 2
+ |  | SentenciaIf
+ |  |  | >
+ |  |  |  | numero
+ |  |  |  | 0
+ |  |  | Sentencias
+ |  |  |  | Bloque
+ |  |  |  |  | Sentencias
+ |  |  |  |  |  | SentenciaOutput
+ |  |  |  |  |  |  | positivo
+ |  |  | Sentencias
+ |  |  |  | Bloque
+ |  |  |  |  | Sentencias
+ |  |  |  |  |  | SentenciaIf
+ |  |  |  |  |  |  | <
+ |  |  |  |  |  |  |  | numero
+ |  |  |  |  |  |  |  | 0
+ |  |  |  |  |  |  | Sentencias
+ |  |  |  |  |  |  |  | Bloque
+ |  |  |  |  |  |  |  |  | Sentencias
+ |  |  |  |  |  |  |  |  |  | SentenciaOutput
+ |  |  |  |  |  |  |  |  |  |  | negativo
+ |  |  |  |  |  |  | Sentencias
+ |  |  |  |  |  |  |  | Bloque
+ |  |  |  |  |  |  |  |  | Sentencias
+ |  |  |  |  |  |  |  |  |  | SentenciaOutput
+ |  |  |  |  |  |  |  |  |  |  | nulo

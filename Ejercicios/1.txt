@@ -1,0 +1,8 @@
+main {
+int A, B;
+cin A;
+cin B;
+float res;
+res=(A + B)*(A+B) / 3;
+cout res;
+}

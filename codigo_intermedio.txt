@@ -1,0 +1,26 @@
+IN numero
+LDC T2, 0
+ST T2, positivo
+LDC T3, 1
+ST T3, negativo
+LDC T4, 2
+ST T4, nulo
+LDC T5, 0
+SUB numero, T5, T6
+JGT T6, LABEL_1
+JMP LABEL_2
+LABEL_1:
+OUT positivo
+JMP LABEL_3
+LABEL_2:
+LDC T7, 0
+SUB numero, T7, T8
+JLT T8, LABEL_4
+JMP LABEL_5
+LABEL_4:
+OUT negativo
+JMP LABEL_6
+LABEL_5:
+OUT nulo
+LABEL_6:
+LABEL_3:

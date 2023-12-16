@@ -1,0 +1,61 @@
+ main  --* palabra reservada --* 1
+ {  --* simbolo especial --*1
+ int  --* palabra reservada --* 2
+ numero  --* identificador --*2
+ ;  --* simbolo especial --*2
+ cin  --* palabra reservada --* 3
+ numero  --* identificador --*3
+ ;  --* simbolo especial --*3
+ int  --* palabra reservada --* 4
+ positivo  --* identificador --*4
+ ,  --* simbolo especial --*4
+ negativo  --* identificador --*4
+ ,  --* simbolo especial --*4
+ nulo  --* identificador --*4
+ ;  --* simbolo especial --*4
+ positivo  --* identificador --*5
+ =  --* operador aritmetico --*5
+ 0 --* entero --* 5
+ ;  --* simbolo especial --*5
+ negativo  --* identificador --*6
+ =  --* operador aritmetico --*6
+ 1 --* entero --* 6
+ ;  --* simbolo especial --*6
+ nulo  --* identificador --*7
+ =  --* operador aritmetico --*7
+ 2 --* entero --* 7
+ ;  --* simbolo especial --*7
+ if  --* palabra reservada --* 8
+ (  --* simbolo especial --*8
+ numero  --* identificador --*8
+ > --* operador relacional --*8
+ 0 --* entero --* 8
+ )  --* simbolo especial --*8
+ {  --* simbolo especial --*8
+ cout  --* palabra reservada --* 9
+ positivo  --* identificador --*9
+ ;  --* simbolo especial --*9
+ }  --* simbolo especial --*10
+ else  --* palabra reservada --* 10
+ {  --* simbolo especial --*10
+ if  --* palabra reservada --* 11
+ (  --* simbolo especial --*11
+ numero  --* identificador --*11
+ < --* operador relacional --*11
+ 0 --* entero --* 11
+ )  --* simbolo especial --*11
+ {  --* simbolo especial --*11
+ cout  --* palabra reservada --* 12
+ negativo  --* identificador --*12
+ ;  --* simbolo especial --*12
+ }  --* simbolo especial --*13
+ else  --* palabra reservada --* 13
+ {  --* simbolo especial --*13
+ cout  --* palabra reservada --* 14
+ nulo  --* identificador --*14
+ ;  --* simbolo especial --*14
+ }  --* simbolo especial --*15
+ end  --* palabra reservada --* 15
+ }  --* simbolo especial --*16
+ end  --* palabra reservada --* 16
+ }  --* simbolo especial --*18

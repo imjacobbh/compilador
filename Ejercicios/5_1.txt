@@ -1,0 +1,59 @@
+
+main {
+    // Fábrica 1
+int x,y;
+x=1;
+y=2;
+    int fabrica1_enero; int fabrica1_febrero; int fabrica1_marzo; int fabrica1_abril;
+    int fabrica1_mayo; int fabrica1_junio; int fabrica1_julio; int fabrica1_agosto;
+    int fabrica1_septiembre; int fabrica1_octubre; int fabrica1_noviembre; int fabrica1_diciembre;
+
+    // Fábrica 2
+    int fabrica2_enero; int fabrica2_febrero; int fabrica2_marzo; int fabrica2_abril;
+    int fabrica2_mayo; int fabrica2_junio; int fabrica2_julio; int fabrica2_agosto;
+    int fabrica2_septiembre; int fabrica2_octubre; int fabrica2_noviembre; int fabrica2_diciembre;
+
+    // Asignaciones de producción para cada mes
+    // Fábrica 1
+    fabrica1_enero = 100000; fabrica1_febrero = 150000; fabrica1_marzo = 200000;
+    fabrica1_abril = 250000; fabrica1_mayo = 300000; fabrica1_junio = 350000;
+    fabrica1_julio = 400000; fabrica1_agosto = 450000; fabrica1_septiembre = 500000;
+    fabrica1_octubre = 550000; fabrica1_noviembre = 600000; fabrica1_diciembre = 650000;
+
+    // Fábrica 2
+    fabrica2_enero = 200000; fabrica2_febrero = 250000; fabrica2_marzo = 300000;
+    fabrica2_abril = 350000; fabrica2_mayo = 400000; fabrica2_junio = 450000;
+    fabrica2_julio = 3500000; fabrica2_agosto = 550000; fabrica2_septiembre = 600000;
+    fabrica2_octubre = 650000; fabrica2_noviembre = 700000; fabrica2_diciembre = 750000;
+
+    // Declaración e inicialización de totales anuales
+    int total_fabrica1,total_fabrica2;
+
+    // Cálculo de totales anuales
+    total_fabrica1 = fabrica1_enero + fabrica1_febrero + fabrica1_marzo + fabrica1_abril + fabrica1_mayo + fabrica1_junio + fabrica1_julio + fabrica1_agosto + fabrica1_septiembre + fabrica1_octubre + fabrica1_noviembre + fabrica1_diciembre;
+    total_fabrica2 = fabrica2_enero + fabrica2_febrero + fabrica2_marzo + fabrica2_abril + fabrica2_mayo + fabrica2_junio + fabrica2_julio + fabrica2_agosto + fabrica2_septiembre + fabrica2_octubre + fabrica2_noviembre + fabrica2_diciembre;
+
+    // Imprimir totales anuales
+    cout total_fabrica1;
+    cout total_fabrica2;
+
+    // Determinar e imprimir la fábrica con mayor producción anual
+    if (total_fabrica1 > total_fabrica2) {
+        cout x;
+        cout total_fabrica1;
+    } else {
+        cout y;
+        cout total_fabrica2;
+    }end
+
+    // Verificar producción de julio y mostrar identificador de fábricas que superaron $3000000
+
+    if (fabrica1_julio > 3000000) {
+        cout x;
+    }
+    end
+    if (fabrica2_julio > 3000000) {
+        cout y;
+    }
+    end
+}

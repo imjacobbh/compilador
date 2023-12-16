@@ -1,0 +1,18 @@
+main {
+ int numero;
+ cin numero;
+int positivo,negativo,nulo;
+positivo=0;
+negativo = 1;
+nulo=2;
+   if (numero > 0) {
+       cout positivo;
+    } else{
+	if (numero < 0){
+	cout negativo;
+	}else{
+	cout nulo;
+}end
+    }end
+
+}

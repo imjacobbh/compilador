@@ -1,0 +1,42 @@
+main {
+    int N;
+    int totalProduccion;
+    int produccion;
+    int maxProduccion;
+    maxProduccion = 0;
+    int fabMaxProduccion;
+    fabMaxProduccion = 0;
+    cin N;
+    int i;
+    i=1;
+    int j;
+    while (i <= N) {
+        totalProduccion = 0;
+        j =1;
+        while (j <= 2) {
+ 	cin produccion;
+            totalProduccion = totalProduccion + produccion;
+            // c) Imprimir las claves de las fábricas cuyas producciones en el mes de julio superaron los $3,000,000
+            if (j == 2) {
+	    if (produccion > 3000000) {
+                    cout i;
+	    }
+	    end
+            }
+            end
+            j++;
+        }
+        // a) Los totales anuales de producción de cada fábrica.
+        cout totalProduccion;
+        // b) La clave de la fábrica que más produjo en el año.
+        if (totalProduccion > maxProduccion) {
+            maxProduccion = totalProduccion;
+            fabMaxProduccion = i;
+        }end
+        i++;
+   }
+    //Imprime la fabrica que más produjo
+    cout fabMaxProduccion;
+    // Imprime la produccion de la fabrica 
+    cout maxProduccion;
+}
